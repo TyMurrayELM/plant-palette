@@ -21,41 +21,46 @@ const BRAND = {
 
 // ─── Plant Data ───────────────────────────────────────────────
 const PLANTS = [
-  { id: 1, name: "Baja Ruellia", image: "bajaruellia.png", categories: ["Modern", "Adaptive"], description: "A small shrub with light green foliage and lavender, trumpet-shaped flowers that bloom in summer.", drought: 2, sun: "both", cutback: false, type: "shrub" },
-  { id: 2, name: "Coral Fountain Grass", image: "coralfountaingrass.png", categories: ["Modern", "Adaptive"], description: "A graceful ornamental grass with arching green leaves and pinkish-red, foxtail-like plumes that resemble water spraying from a fountain.", drought: 3, sun: "full", cutback: false, type: "grass" },
-  { id: 3, name: 'Dwarf Olive Shrub "Little Ollies"', image: "dwarfoliveshrub.png", categories: ["Modern"], description: "A slow-growing, compact shrub with attractive silvery-green foliage, often used for hedges or accents. Tolerant of heat and drought once established.", drought: 2, sun: "full", cutback: false, type: "shrub" },
-  { id: 4, name: "Gardenia", image: "gardenia.png", categories: ["Modern"], description: "Highly fragrant evergreen shrub with creamy white flowers and glossy, dark green leaves. Prefers partial shade.", drought: 4, sun: "partial", cutback: false, type: "shrub" },
-  { id: 5, name: "Gold Lantana", image: "goldlantana.png", categories: ["Modern", "Adaptive"], description: "A low-maintenance, mounding lantana with bright gold-yellow flower clusters. Excellent for attracting butterflies. Rejuvenation cutback candidate.", drought: 2, sun: "full", cutback: true, type: "shrub" },
-  { id: 6, name: "Green Cloud Sage", image: "greencloudsage.png", categories: ["Modern", "Adaptive"], description: "A tough, drought-tolerant shrub with a dense, rounded form. Produces prolific lavender flowers, especially after summer rains. Rejuvenation cutback candidate.", drought: 2, sun: "full", cutback: true, type: "shrub" },
-  { id: 7, name: "Hopseed Bush", image: "hopseedbush.png", categories: ["Modern", "Adaptive", "Xeriscape"], description: "An evergreen shrub or small tree with slender green or purple leaves. Very durable and drought-tolerant, used for screening.", drought: 2, sun: "full", cutback: false, type: "shrub" },
-  { id: 8, name: "Mexican Red Bird of Paradise", image: "mexicanredbirdofparadise.png", categories: ["Modern", "Adaptive"], description: "A desert shrub with bright red and yellow, pea-like flowers and ferny foliage. Blooms from spring until fall in warm climates. Should only be planted in open areas, where it can grow to its full size. Rejuvenation cutback candidate.", drought: 2, sun: "full", cutback: true, type: "shrub" },
-  { id: 9, name: "Orange Jubilee", image: "orangejubilee.png", categories: ["Modern", "Adaptive"], description: "A fast-growing shrub or small tree with showy clusters of bright orange, trumpet-shaped flowers. Attracts hummingbirds. Rejuvenation cutback candidate.", drought: 2, sun: "full", cutback: true, type: "shrub" },
-  { id: 10, name: "Outback Sunrise", image: "outbacksunrise.png", categories: ["Modern", "Adaptive"], description: "A dark green, ground cover plant with bright yellow flowers. Grows quickly, and thrives in full sun.", drought: 2, sun: "full", cutback: false, type: "groundcover" },
-  { id: 11, name: "Radiation Lantana", image: "radiationlantana.png", categories: ["Modern", "Adaptive"], description: "A vigorous, mounding lantana variety known for its continuous display of flowers that are bright red, fading to orange and yellow. Rejuvenation cutback candidate.", drought: 2, sun: "full", cutback: true, type: "shrub" },
-  { id: 12, name: "Red Yucca", image: "redyucca.png", categories: ["Modern", "Xeriscape", "Adaptive"], description: "A low-maintenance, hardy succulent that does well in full sun. Blooms red stalks and is drought tolerant. Should be thinned out annually to clean out dead stalks and refresh the plant.", drought: 1, sun: "full", cutback: false, type: "succulent" },
-  { id: 13, name: "Sago Palm", image: "sagopalm.png", categories: ["Modern"], description: "A very slow-growing palm with a symmetrical crown of stiff, dark green fronds. A popular, architectural plant for landscape accents. Prefers shade.", drought: 3, sun: "partial", cutback: false, type: "palm" },
-  { id: 14, name: "Texas Ranger Sage", image: "texasrangersage.png", categories: ["Modern", "Adaptive"], description: "A drought-tolerant shrub with silvery-gray foliage and vibrant lavender-purple, bell-shaped flowers that appear after rainfall. Cutback candidate.", drought: 2, sun: "full", cutback: true, type: "shrub" },
-  { id: 15, name: "Torch Glow Bougainvillea", image: "torchglowbougainvillea.png", categories: ["Modern", "Adaptive"], description: "A unique, upright, and non-vining bougainvillea with vivid magenta-red bracts. Excellent as a colorful hedge or accent plant.", drought: 2, sun: "full", cutback: true, type: "shrub" },
-  { id: 16, name: "Yellow Bell", image: "yellowbell.png", categories: ["Modern", "Adaptive"], description: "A cousin to the Orange Jubilee; fast-growing shrub or small tree with showy clusters of bright yellow, trumpet-shaped flowers. Attracts hummingbirds. Cutback candidate.", drought: 2, sun: "full", cutback: true, type: "shrub" },
-  { id: 17, name: "Little Leaf Cordia", image: "littleleafcordia.png", categories: ["Adaptive"], description: "A desert-adapted shrub with a dense, mounding form and small, gray-green leaves. Provides texture and is very heat tolerant. Should only be planted in desert space, like retentions.", drought: 2, sun: "both", cutback: false, type: "shrub" },
-  { id: 18, name: "Agave Americana", image: "agaveamericana.png", categories: ["Xeriscape"], description: "A large, blue tinted agave. Produces pups around the base and will produce a massive flower stalk signaling the end of its life cycle.", drought: 1, sun: "full", cutback: false, type: "succulent" },
-  { id: 19, name: "Aloe Vera", image: "aloevera.png", categories: ["Xeriscape"], description: "A clumping aloe with thick, fleshy, spotted leaves, often used for its soothing gel. A hardy, easy-to-grow succulent.", drought: 1, sun: "full", cutback: false, type: "succulent" },
-  { id: 20, name: "Artichoke Agave", image: "artichokeagave.png", categories: ["Xeriscape"], description: "A medium-sized agave that forms a tight, symmetrical rosette of gray-green leaves, resembling an artichoke head.", drought: 1, sun: "full", cutback: false, type: "succulent" },
-  { id: 21, name: "Argentine Giant Cactus", image: "argentinegiantcactus.png", categories: ["Xeriscape"], description: "A columnar cactus known for its very large, fragrant white flowers that open at night. Grows in tall, ribbed columns.", drought: 1, sun: "full", cutback: false, type: "cactus" },
-  { id: 22, name: "Blue Elf Aloe", image: "blueelfaloe.png", categories: ["Xeriscape"], description: "A fast-clumping aloe that produces striking red-orange flower spikes in winter. Its blue-green leaves add year-round color.", drought: 1, sun: "full", cutback: false, type: "succulent" },
-  { id: 23, name: "Firestick", image: "firestick.png", categories: ["Xeriscape"], description: "A striking, low-maintenance succulent known for its pencil-thin branches that turn from bright green to fiery orange in the winter. Can grow to 8-10 feet tall.", drought: 1, sun: "full", cutback: false, type: "succulent" },
-  { id: 24, name: "Fish Hook Barrel", image: "fishhookbarrel.png", categories: ["Xeriscape"], description: "A spherical to columnar cactus covered in fierce, hooked spines that resemble fish hooks. A tough, iconic desert plant.", drought: 1, sun: "full", cutback: false, type: "cactus" },
-  { id: 25, name: "Golden Barrel", image: "goldenbarrel.png", categories: ["Xeriscape"], description: "A solitary, spherical cactus with golden-yellow spines and ribs. A classic, architectural desert plant that can grow quite large.", drought: 1, sun: "full", cutback: false, type: "cactus" },
-  { id: 26, name: "Lady Slipper Succulent", image: "ladyslippersucculent.png", categories: ["Xeriscape"], description: "A unique, multi-branched succulent with thin, pencil-like, green stems. Prefers partial sun and is very drought tolerant. Pink-orange flowers.", drought: 1, sun: "full", cutback: false, type: "succulent" },
-  { id: 27, name: "Mexican Fence Post", image: "mexicanfencepost.png", categories: ["Xeriscape"], description: "A tall, columnar cactus with a chalky blue-green color, used to create living fences or strong vertical accents.", drought: 1, sun: "full", cutback: false, type: "cactus" },
-  { id: 28, name: "Moroccan Mound", image: "moroccanmound.png", categories: ["Xeriscape"], description: "A low-growing, mounding cactus that spreads to form a dense clump of cylindrical, spiny stems.", drought: 1, sun: "full", cutback: false, type: "cactus" },
-  { id: 29, name: "Queen Victoria Agave", image: "queenvictoriaagave.png", categories: ["Xeriscape"], description: "A slow growing, highly symmetrical agave that is known for its architectural form and green color. Can grow up to 12-18 inches tall.", drought: 1, sun: "full", cutback: false, type: "succulent" },
-  { id: 30, name: "Red Push Pistache", image: "redpushpistache.png", categories: ["Trees"], description: "A hardy, fast-growing deciduous tree; renowned for its winter foliage that turns a striking red color.", drought: 3, sun: "full", cutback: false, type: "tree" },
-  { id: 31, name: "Texas Live Oak", image: "texasliveoak.png", categories: ["Trees"], description: "A hardy, drought-tolerant, evergreen tree; dark trunk with dark green leaves. Survives in parking lots through the summer heat.", drought: 2, sun: "both", cutback: false, type: "tree" },
-  { id: 32, name: "Desert Museum Palo Verde", image: "desertmuseumpaloverde.png", categories: ["Trees"], description: "A fast-growing, thornless hybrid tree. Known for its stunning yellow flowers and striking green bark, this drought-tolerant tree is perfect for open spaces.", drought: 1, sun: "full", cutback: false, type: "tree" },
-  { id: 33, name: "Pygmy Palm", image: "pygmypalm.png", categories: ["Trees"], description: "A small, slow-growing, slender palm with a slightly curved trunk and fine-textured, bright green, arching fronds. Ideal for small spaces.", drought: 3, sun: "both", cutback: false, type: "palm" },
-  { id: 34, name: "Mexican Fan Palm", image: "mexicanfanpalm.png", categories: ["Trees"], description: "A fast-growing, evergreen palm, known for its towering height and fan-shaped fronds. Can grow up to 100 feet tall, heat and drought tolerant.", drought: 1, sun: "full", cutback: false, type: "palm" },
-  { id: 35, name: "Date Palm", image: "datepalm.png", categories: ["Trees"], description: "An evergreen palm, known for its blue-tinted fronds. Produces date fruits in bunches every May; is both heat and drought-tolerant.", drought: 1, sun: "full", cutback: false, type: "palm" },
+  { id: 1, name: "Baja Ruellia", image: "bajaruellia.png", categories: ["Modern", "Adaptive"], description: "A small shrub with light green foliage and lavender, trumpet-shaped flowers that bloom in summer.", drought: 2, sun: "both", cutback: false, type: "shrub", price: 1 },
+  { id: 2, name: "Coral Fountain Grass", image: "coralfountaingrass.png", categories: ["Modern", "Adaptive"], description: "A graceful ornamental grass with arching green leaves and pinkish-red, foxtail-like plumes that resemble water spraying from a fountain.", drought: 3, sun: "full", cutback: false, type: "grass", price: 1 },
+  { id: 3, name: 'Dwarf Olive Shrub "Little Ollies"', image: "dwarfoliveshrub.png", categories: ["Modern"], description: "A slow-growing, compact shrub with attractive silvery-green foliage, often used for hedges or accents. Tolerant of heat and drought once established.", drought: 2, sun: "full", cutback: false, type: "shrub", price: 1 },
+  { id: 4, name: "Gardenia", image: "gardenia.png", categories: ["Modern"], description: "Highly fragrant evergreen shrub with creamy white flowers and glossy, dark green leaves. Prefers partial shade.", drought: 4, sun: "partial", cutback: false, type: "shrub", price: 2 },
+  { id: 5, name: "Gold Lantana", image: "goldlantana.png", categories: ["Modern", "Adaptive"], description: "A low-maintenance, mounding lantana with bright gold-yellow flower clusters. Excellent for attracting butterflies. Rejuvenation cutback candidate.", drought: 2, sun: "full", cutback: true, type: "shrub", price: 1 },
+  { id: 7, name: "Hopseed Bush", image: "hopseedbush.png", categories: ["Modern", "Adaptive", "Xeriscape"], description: "An evergreen shrub or small tree with slender green or purple leaves. Very durable and drought-tolerant, used for screening.", drought: 2, sun: "full", cutback: false, type: "shrub", price: 1 },
+  { id: 8, name: "Mexican Red Bird of Paradise", image: "mexicanredbirdofparadise.png", categories: ["Modern", "Adaptive"], description: "A desert shrub with bright red and yellow, pea-like flowers and ferny foliage. Blooms from spring until fall in warm climates. Should only be planted in open areas, where it can grow to its full size. Rejuvenation cutback candidate.", drought: 2, sun: "full", cutback: true, type: "shrub", price: 2 },
+  { id: 9, name: "Orange Jubilee", image: "orangejubilee.png", categories: ["Modern", "Adaptive"], description: "A fast-growing shrub or small tree with showy clusters of bright orange, trumpet-shaped flowers. Attracts hummingbirds. Rejuvenation cutback candidate.", drought: 2, sun: "full", cutback: true, type: "shrub", price: 1 },
+  { id: 10, name: "Outback Sunrise", image: "outbacksunrise.png", categories: ["Modern", "Adaptive"], description: "A dark green, ground cover plant with bright yellow flowers. Grows quickly, and thrives in full sun.", drought: 2, sun: "full", cutback: false, type: "groundcover", price: 1 },
+  { id: 11, name: "Radiation Lantana", image: "radiationlantana.png", categories: ["Modern", "Adaptive"], description: "A vigorous, mounding lantana variety known for its continuous display of flowers that are bright red, fading to orange and yellow. Rejuvenation cutback candidate.", drought: 2, sun: "full", cutback: true, type: "shrub", price: 1 },
+  { id: 13, name: "Sago Palm", image: "sagopalm.png", categories: ["Modern"], description: "A very slow-growing palm with a symmetrical crown of stiff, dark green fronds. A popular, architectural plant for landscape accents. Prefers shade.", drought: 3, sun: "partial", cutback: false, type: "palm", price: 3 },
+  { id: 15, name: "Torch Glow Bougainvillea", image: "torchglowbougainvillea.png", categories: ["Modern", "Adaptive"], description: "A unique, upright, and non-vining bougainvillea with vivid magenta-red bracts. Excellent as a colorful hedge or accent plant.", drought: 2, sun: "full", cutback: true, type: "shrub", price: 1 },
+  { id: 44, name: "Mexican Bird of Paradise", image: "mexicanbirdofparadise.png", categories: ["Modern", "Adaptive", "Xeriscape", "Trees"], description: "This small, ornamental tree or large shrub boasts striking, colorful blooms that are typically yellow. It is highly drought-tolerant once established.", drought: 2, sun: "full", cutback: false, type: "tree", price: 2 },
+  { id: 43, name: "Chinese Elm", image: "chineseelm.png", categories: ["Modern", "Adaptive", "Trees"], description: "The Chinese Elm is a fast-growing, semi-deciduous tree prized for its attractive, mottled bark and excellent shade qualities. It is adaptable to various soil types.", drought: 3, sun: "full", cutback: false, type: "tree", price: 2 },
+  { id: 42, name: 'Ruellia Simplex "Mexican Petunia"', image: "ruelliasimplex.png", categories: ["Modern", "Adaptive"], description: "Commonly known as Mexican Petunia, this perennial features trumpet-shaped flowers, typically purple, that bloom throughout the warm season. It is a resilient and low-maintenance plant.", drought: 2, sun: "both", cutback: false, type: "shrub", price: 1 },
+  { id: 41, name: "Morning Glory", image: "morningglory.png", categories: ["Modern", "Adaptive"], description: "The Morning Glory Shrub offers beautiful, funnel-shaped flowers, often blue or purple, that open in the morning and close later in the day. It provides dense coverage and is fast-growing. Makes excellent groundcover.", drought: 2, sun: "full", cutback: false, type: "groundcover", price: 1 },
+  { id: 40, name: "Myoporum", image: "myoporum.png", categories: ["Modern", "Adaptive"], description: "Myoporum is a versatile, evergreen shrub or groundcover known for its tolerance to heat and poor soil. It has small, white flowers and dense, bright green foliage, making it a good choice for screens or mass planting. Makes for excellent ground cover.", drought: 2, sun: "full", cutback: false, type: "groundcover", price: 1 },
+  { id: 39, name: "Hong Kong Orchid", image: "hongkongorchid.png", categories: ["Modern", "Trees"], description: "A spectacular ornamental tree famous for its large, fragrant flowers and butterfly-shaped leaves. Provides rare winter color by blooming late fall to early spring.", drought: 3, sun: "partial", cutback: false, type: "tree", price: 3 },
+  { id: 38, name: "Velvet Mesquite", image: "velvetmesquite.png", categories: ["Modern", "Adaptive", "Xeriscape", "Trees"], description: "The Mesquite tree is known for its shade and tolerance to arid conditions. It features feathery, green foliage and produces bean pods. Does best in open, unconfined areas.", drought: 1, sun: "full", cutback: false, type: "tree", price: 2 },
+  { id: 37, name: "Elephant Food", image: "elephantfood.png", categories: ["Modern", "Xeriscape"], description: "A versatile, succulent shrub. Known for its emerald green leaves, it comes in different varieties like variegated, trailing, and mammoth. Does best in pots and planters.", drought: 1, sun: "full", cutback: false, type: "succulent", price: 1 },
+  { id: 36, name: "Fuego Tecoma", image: "fuegotecoma.png", categories: ["Modern"], description: "A compact, fast-growing shrub known for its intense red-orange flowers. The hybrid cousin of the yellow bells, it tends to stay under 6 feet tall.", drought: 2, sun: "full", cutback: false, type: "shrub", price: 1 },
+  { id: 16, name: "Yellow Bell", image: "yellowbell.png", categories: ["Modern", "Adaptive"], description: "A cousin to the Orange Jubilee; fast-growing shrub or small tree with showy clusters of bright yellow, trumpet-shaped flowers. Attracts hummingbirds. Cutback candidate.", drought: 2, sun: "full", cutback: true, type: "shrub", price: 1 },
+  { id: 17, name: "Little Leaf Cordia", image: "littleleafcordia.png", categories: ["Adaptive"], description: "A desert-adapted shrub with a dense, mounding form and small, gray-green leaves. Provides texture and is very heat tolerant. Should only be planted in desert space, like retentions.", drought: 2, sun: "both", cutback: false, type: "shrub", price: 1 },
+  { id: 18, name: "Agave Americana", image: "agaveamericana.png", categories: ["Xeriscape"], description: "A large, blue tinted agave. Produces pups around the base and will produce a massive flower stalk signaling the end of its life cycle.", drought: 1, sun: "full", cutback: false, type: "succulent", price: 2 },
+  { id: 19, name: "Aloe Vera", image: "aloevera.png", categories: ["Xeriscape"], description: "A clumping aloe with thick, fleshy, spotted leaves, often used for its soothing gel. A hardy, easy-to-grow succulent.", drought: 1, sun: "full", cutback: false, type: "succulent", price: 2 },
+  { id: 20, name: "Artichoke Agave", image: "artichokeagave.png", categories: ["Xeriscape"], description: "A medium-sized agave that forms a tight, symmetrical rosette of gray-green leaves, resembling an artichoke head.", drought: 1, sun: "full", cutback: false, type: "succulent", price: 2 },
+  { id: 21, name: "Argentine Giant Cactus", image: "argentinegiantcactus.png", categories: ["Xeriscape"], description: "A columnar cactus known for its very large, fragrant white flowers that open at night. Grows in tall, ribbed columns.", drought: 1, sun: "full", cutback: false, type: "cactus", price: 2 },
+  { id: 22, name: "Blue Elf Aloe", image: "blueelfaloe.png", categories: ["Xeriscape"], description: "A fast-clumping aloe that produces striking red-orange flower spikes in winter. Its blue-green leaves add year-round color.", drought: 1, sun: "full", cutback: false, type: "succulent", price: 2 },
+  { id: 23, name: "Firestick", image: "firestick.png", categories: ["Xeriscape"], description: "A striking, low-maintenance succulent known for its pencil-thin branches that turn from bright green to fiery orange in the winter. Can grow to 8-10 feet tall.", drought: 1, sun: "full", cutback: false, type: "succulent", price: 2 },
+  { id: 24, name: "Fish Hook Barrel", image: "fishhookbarrel.png", categories: ["Xeriscape"], description: "A spherical to columnar cactus covered in fierce, hooked spines that resemble fish hooks. A tough, iconic desert plant.", drought: 1, sun: "full", cutback: false, type: "cactus", price: 2 },
+  { id: 25, name: "Golden Barrel", image: "goldenbarrel.png", categories: ["Xeriscape"], description: "A solitary, spherical cactus with golden-yellow spines and ribs. A classic, architectural desert plant that can grow quite large.", drought: 1, sun: "full", cutback: false, type: "cactus", price: 2 },
+  { id: 26, name: "Lady Slipper Succulent", image: "ladyslippersucculent.png", categories: ["Xeriscape"], description: "A unique, multi-branched succulent with thin, pencil-like, green stems. Prefers partial sun and is very drought tolerant. Pink-orange flowers.", drought: 1, sun: "full", cutback: false, type: "succulent", price: 2 },
+  { id: 27, name: "Mexican Fence Post", image: "mexicanfencepost.png", categories: ["Xeriscape"], description: "A tall, columnar cactus with a chalky blue-green color, used to create living fences or strong vertical accents.", drought: 1, sun: "full", cutback: false, type: "cactus", price: 2 },
+  { id: 28, name: "Moroccan Mound", image: "moroccanmound.png", categories: ["Xeriscape"], description: "A low-growing, mounding cactus that spreads to form a dense clump of cylindrical, spiny stems.", drought: 1, sun: "full", cutback: false, type: "cactus", price: 2 },
+  { id: 29, name: "Queen Victoria Agave", image: "queenvictoriaagave.png", categories: ["Xeriscape"], description: "A slow growing, highly symmetrical agave that is known for its architectural form and green color. Can grow up to 12-18 inches tall.", drought: 1, sun: "full", cutback: false, type: "succulent", price: 2 },
+  { id: 30, name: "Red Push Pistache", image: "redpushpistache.png", categories: ["Trees"], description: "A hardy, fast-growing deciduous tree; renowned for its winter foliage that turns a striking red color.", drought: 3, sun: "full", cutback: false, type: "tree", price: 2 },
+  { id: 31, name: "Texas Live Oak", image: "texasliveoak.png", categories: ["Trees"], description: "A hardy, drought-tolerant, evergreen tree; dark trunk with dark green leaves. Survives in parking lots through the summer heat.", drought: 2, sun: "both", cutback: false, type: "tree", price: 2 },
+  { id: 33, name: "Pygmy Palm", image: "pygmypalm.png", categories: ["Trees"], description: "A small, slow-growing, slender palm with a slightly curved trunk and fine-textured, bright green, arching fronds. Ideal for small spaces.", drought: 3, sun: "both", cutback: false, type: "palm", price: 2 },
+  { id: 34, name: "Mexican Fan Palm", image: "mexicanfanpalm.png", categories: ["Trees"], description: "A fast-growing, evergreen palm, known for its towering height and fan-shaped fronds. Can grow up to 100 feet tall, heat and drought tolerant.", drought: 1, sun: "full", cutback: false, type: "palm", price: 3 },
+  { id: 35, name: "Date Palm", image: "datepalm.png", categories: ["Trees"], description: "An evergreen palm, known for its blue-tinted fronds. Produces date fruits in bunches every May; is both heat and drought-tolerant.", drought: 1, sun: "full", cutback: false, type: "palm", price: 3 },
 ];
 
 const CATEGORIES = ["All", "Modern", "Xeriscape", "Adaptive", "Trees"];
@@ -204,6 +209,11 @@ const PlantCard = ({ plant, onClick, index }) => {
           {(plant.sun === "full" || plant.sun === "both") && <span title="Full Sun"><SunFull size={22} /></span>}
           {(plant.sun === "partial" || plant.sun === "both") && <span title="Partial Sun"><SunPartial size={22} /></span>}
         </div>
+        {plant.price && (
+          <span style={{ fontSize: 13, fontWeight: 800, color: "#fff", fontFamily: "'Montserrat', sans-serif", letterSpacing: "0.02em" }} title={plant.price === 1 ? "Low cost" : plant.price === 2 ? "Average cost" : "Premium cost"}>
+            {"$".repeat(plant.price)}
+          </span>
+        )}
       </div>
       {plant.cutback && (
         <div style={{
@@ -328,6 +338,18 @@ const PlantDetail = ({ plant, onClose }) => {
                 )}
               </div>
             </div>
+            {plant.price && (
+              <div style={{
+                padding: "14px 20px", display: "flex", justifyContent: "space-between", alignItems: "center",
+                borderTop: "1px solid rgba(255,255,255,0.06)", background: "rgba(255,255,255,0.03)",
+              }}>
+                <span style={{ fontSize: 14, color: "#fff", fontWeight: 700, fontFamily: "'Open Sans', sans-serif", textTransform: "uppercase" }}>Relative Price</span>
+                <span style={{ fontSize: 18, fontWeight: 800, color: "#fff", fontFamily: "'Montserrat', sans-serif", letterSpacing: "0.05em" }}>
+                  {"$".repeat(plant.price)}
+                  <span style={{ color: "rgba(255,255,255,0.2)" }}>{"$".repeat(3 - plant.price)}</span>
+                </span>
+              </div>
+            )}
           </div>
           {plant.cutback && (
             <div style={{
@@ -382,6 +404,7 @@ export default function App() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [droughtFilter, setDroughtFilter] = useState(0);
   const [sunFilter, setSunFilter] = useState("all");
+  const [priceFilter, setPriceFilter] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedPlant, setSelectedPlant] = useState(null);
   const [activeSection, setActiveSection] = useState("plants");
@@ -398,6 +421,7 @@ export default function App() {
     if (droughtFilter > 0 && p.drought !== droughtFilter) return false;
     if (sunFilter === "full" && p.sun !== "full" && p.sun !== "both") return false;
     if (sunFilter === "partial" && p.sun !== "partial" && p.sun !== "both") return false;
+    if (priceFilter > 0 && p.price !== priceFilter) return false;
     if (searchQuery && !p.name.toLowerCase().includes(searchQuery.toLowerCase())) return false;
     return true;
   });
@@ -491,10 +515,12 @@ export default function App() {
       <div className="content-section" style={{ maxWidth: 1200, margin: "0 auto", padding: "0 32px 80px", position: "relative" }}>
         {activeSection === "plants" && (
           <>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 24, animation: "fadeUp 0.4s ease 0.2s both" }}>
+            <div style={{ marginBottom: 16, animation: "fadeUp 0.4s ease 0.2s both" }}>
               <input type="text" placeholder="Search plants..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
-                style={{ flex: "1 1 200px", minWidth: 180, padding: "10px 16px", borderRadius: 8, border: "2px solid #fff", background: "rgba(255,255,255,0.1)", color: "#fff", fontSize: 14, fontFamily: "'Open Sans', sans-serif" }} />
-              
+                style={{ width: "100%", padding: "10px 16px", borderRadius: 8, border: "2px solid #fff", background: "rgba(255,255,255,0.1)", color: "#fff", fontSize: 14, fontFamily: "'Open Sans', sans-serif", boxSizing: "border-box" }} />
+            </div>
+
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 24, animation: "fadeUp 0.4s ease 0.2s both" }}>
               <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                 <span style={{ fontSize: 10, fontWeight: 800, color: "#fff", fontFamily: "'Montserrat', sans-serif", textTransform: "uppercase", letterSpacing: "0.06em" }}>Sunlight Needs</span>
                 <div style={{ display: "flex", gap: 4 }}>
@@ -536,6 +562,28 @@ export default function App() {
                     fontFamily: "'Open Sans', sans-serif", transition: "all 0.2s ease", display: "flex", gap: 1,
                   }}>{Array.from({length: d}).map((_, i) => <span key={i} style={{ fontSize: 10 }}>💧</span>)}</button>
                 ))}
+                </div>
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                <span style={{ fontSize: 10, fontWeight: 800, color: "#fff", fontFamily: "'Montserrat', sans-serif", textTransform: "uppercase", letterSpacing: "0.06em" }}>Relative Price</span>
+                <div style={{ display: "flex", gap: 4 }}>
+                  <button onClick={() => setPriceFilter(0)} style={{
+                    background: priceFilter === 0 ? "#fff" : "rgba(255,255,255,0.08)",
+                    border: "1px solid #fff",
+                    color: priceFilter === 0 ? BRAND.darkest : "#fff",
+                    padding: "8px 14px", borderRadius: 6, cursor: "pointer", fontSize: 12, fontWeight: 700,
+                    fontFamily: "'Montserrat', sans-serif", transition: "all 0.2s ease",
+                  }}>Any $</button>
+                  {[1,2,3].map(p => (
+                    <button key={p} onClick={() => setPriceFilter(priceFilter === p ? 0 : p)} style={{
+                      background: priceFilter === p ? "#fff" : "rgba(255,255,255,0.08)",
+                      border: "1px solid #fff",
+                      color: priceFilter === p ? BRAND.darkest : "#fff",
+                      padding: "8px 12px", borderRadius: 6, cursor: "pointer", fontSize: 12, fontWeight: 700,
+                      fontFamily: "'Montserrat', sans-serif", transition: "all 0.2s ease",
+                    }}>{"$".repeat(p)}</button>
+                  ))}
                 </div>
               </div>
             </div>
