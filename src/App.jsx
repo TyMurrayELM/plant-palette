@@ -406,6 +406,7 @@ export default function App() {
   const [sunFilter, setSunFilter] = useState("all");
   const [priceFilter, setPriceFilter] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedPlant, setSelectedPlant] = useState(null);
   const [activeSection, setActiveSection] = useState("plants");
   const [scrolled, setScrolled] = useState(false);
@@ -415,6 +416,13 @@ export default function App() {
     window.addEventListener("scroll", h);
     return () => window.removeEventListener("scroll", h);
   }, []);
+
+  useEffect(() => {
+    if (!showSuggestions) return;
+    const close = () => setShowSuggestions(false);
+    document.addEventListener("click", close);
+    return () => document.removeEventListener("click", close);
+  }, [showSuggestions]);
 
   const filtered = PLANTS.filter(p => {
     if (activeCategory !== "All" && !p.categories.includes(activeCategory)) return false;
@@ -515,9 +523,31 @@ export default function App() {
       <div className="content-section" style={{ maxWidth: 1200, margin: "0 auto", padding: "0 32px 80px", position: "relative" }}>
         {activeSection === "plants" && (
           <>
-            <div style={{ marginBottom: 16, animation: "fadeUp 0.4s ease 0.2s both" }}>
-              <input type="text" placeholder="Search plants..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)}
+            <div style={{ marginBottom: 16, animation: "fadeUp 0.4s ease 0.2s both", position: "relative", zIndex: 200 }}>
+              <input type="text" placeholder="Search plants..." value={searchQuery}
+                onChange={e => { setSearchQuery(e.target.value); setShowSuggestions(true); }}
+                onFocus={() => searchQuery && setShowSuggestions(true)}
                 style={{ width: "100%", padding: "10px 16px", borderRadius: 8, border: "2px solid #fff", background: "rgba(255,255,255,0.1)", color: "#fff", fontSize: 14, fontFamily: "'Open Sans', sans-serif", boxSizing: "border-box" }} />
+              {showSuggestions && searchQuery && (() => {
+                const matches = PLANTS.filter(p => p.name.toLowerCase().includes(searchQuery.toLowerCase())).slice(0, 6);
+                if (matches.length === 0) return null;
+                return (
+                  <div style={{ position: "absolute", top: "100%", left: 0, right: 0, zIndex: 200, background: "rgba(2,40,80,0.95)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: 8, marginTop: 4, overflow: "hidden", backdropFilter: "blur(12px)" }}>
+                    {matches.map(p => (
+                      <button key={p.id} onClick={() => { setSearchQuery(p.name); setShowSuggestions(false); }}
+                        style={{ width: "100%", display: "flex", alignItems: "center", gap: 10, padding: "10px 16px", background: "transparent", border: "none", borderBottom: "1px solid rgba(255,255,255,0.06)", color: "#fff", fontSize: 14, fontFamily: "'Open Sans', sans-serif", cursor: "pointer", textAlign: "left" }}
+                        onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.1)"}
+                        onMouseLeave={e => e.currentTarget.style.background = "transparent"}>
+                        <img src={`/plants/${p.image}`} alt="" style={{ width: 28, height: 28, borderRadius: 4, objectFit: "cover" }} />
+                        <span>{p.name}</span>
+                        <span style={{ marginLeft: "auto", fontSize: 11, color: "rgba(255,255,255,0.5)", fontFamily: "'Montserrat', sans-serif" }}>
+                          {p.categories[0]}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                );
+              })()}
             </div>
 
             <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 24, animation: "fadeUp 0.4s ease 0.2s both" }}>
