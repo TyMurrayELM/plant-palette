@@ -113,12 +113,12 @@ const WaterDrop = ({ filled, size = 18 }) => (
   </svg>
 );
 
-const SunFull = ({ size = 24 }) => (
+const SunFull = ({ size = 24, color = "currentColor" }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-    <circle cx="12" cy="12" r="5" fill="#fff" />
+    <circle cx="12" cy="12" r="5" fill={color} />
     {[0,45,90,135,180,225,270,315].map(a => (
       <line key={a} x1="12" y1="3" x2="12" y2="5.5"
-        stroke="#fff" strokeWidth="2" strokeLinecap="round"
+        stroke={color} strokeWidth="2" strokeLinecap="round"
         transform={`rotate(${a} 12 12)`} />
     ))}
   </svg>
@@ -135,7 +135,7 @@ const SunPartial = ({ size = 24 }) => (
   </svg>
 );
 
-const SunHalf = ({ size = 24 }) => (
+const SunHalf = ({ size = 24, color = "currentColor" }) => (
   <svg width={size * 0.54} height={size} viewBox="0 0 13 24" fill="none">
     <defs>
       <clipPath id="sunHalfClip">
@@ -143,10 +143,10 @@ const SunHalf = ({ size = 24 }) => (
       </clipPath>
     </defs>
     <g clipPath="url(#sunHalfClip)">
-      <circle cx="12" cy="12" r="5" fill="#fff" />
+      <circle cx="12" cy="12" r="5" fill={color} />
       {[0,45,90,135,180,225,270,315].map(a => (
         <line key={a} x1="12" y1="3" x2="12" y2="5.5"
-          stroke="#fff" strokeWidth="2" strokeLinecap="round"
+          stroke={color} strokeWidth="2" strokeLinecap="round"
           transform={`rotate(${a} 12 12)`} />
       ))}
     </g>
@@ -451,6 +451,7 @@ export default function App() {
     if (activeCategory !== "All" && !p.categories.includes(activeCategory)) return false;
     if (droughtFilter > 0 && p.drought !== droughtFilter) return false;
     if (sunFilter === "full" && p.sun !== "full" && p.sun !== "both") return false;
+    if (sunFilter === "both" && p.sun !== "both") return false;
     if (sunFilter === "partial" && p.sun !== "partial" && p.sun !== "both") return false;
     if (priceFilter > 0 && p.price !== priceFilter) return false;
     if (searchQuery && !p.name.toLowerCase().includes(searchQuery.toLowerCase())) return false;
@@ -577,14 +578,19 @@ export default function App() {
               <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                 <span style={{ fontSize: 10, fontWeight: 800, color: "#fff", fontFamily: "'Montserrat', sans-serif", textTransform: "uppercase", letterSpacing: "0.06em" }}>Sunlight Needs</span>
                 <div style={{ display: "flex", gap: 4 }}>
-                  {[{ val: "all", label: "Any Sun" }, { val: "full", label: "☀ Full" }, { val: "partial", label: "◑ Partial" }].map(s => (
+                  {[{ val: "all", label: "Any Sun" }, { val: "full", label: "Full" }, { val: "both", label: "Full + Partial" }, { val: "partial", label: "Partial" }].map(s => (
                     <button key={s.val} onClick={() => setSunFilter(s.val)} style={{
                       background: sunFilter === s.val ? "#fff" : "rgba(255,255,255,0.08)",
                       border: "1px solid #fff",
                       color: sunFilter === s.val ? BRAND.darkest : "#fff",
+                      display: "flex", alignItems: "center", gap: 4,
                       padding: "8px 14px", borderRadius: 6, cursor: "pointer", fontSize: 12, fontWeight: 700,
                       fontFamily: "'Montserrat', sans-serif", textTransform: "uppercase", transition: "all 0.2s ease",
-                    }}>{s.label}</button>
+                    }}>
+                      {(s.val === "full" || s.val === "both") && <SunFull size={14} />}
+                      {(s.val === "both" || s.val === "partial") && <SunHalf size={14} />}
+                      {s.label}
+                    </button>
                   ))}
                 </div>
               </div>
