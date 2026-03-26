@@ -36,7 +36,7 @@ const PLANTS = [
   { id: 44, name: "Mexican Bird of Paradise", image: "mexicanbirdofparadise.png", categories: ["Modern", "Adaptive", "Xeriscape", "Trees"], description: "This small, ornamental tree or large shrub boasts striking, colorful blooms that are typically yellow. It is highly drought-tolerant once established.", drought: 2, sun: "full", cutback: false, type: "tree", price: 2 },
   { id: 43, name: "Chinese Elm", image: "chineseelm.png", categories: ["Modern", "Adaptive", "Trees"], description: "The Chinese Elm is a fast-growing, semi-deciduous tree prized for its attractive, mottled bark and excellent shade qualities. It is adaptable to various soil types.", drought: 3, sun: "full", cutback: false, type: "tree", price: 2 },
   { id: 42, name: 'Ruellia Simplex "Mexican Petunia"', image: "ruelliasimplex.png", categories: ["Modern", "Adaptive"], description: "Commonly known as Mexican Petunia, this perennial features trumpet-shaped flowers, typically purple, that bloom throughout the warm season. It is a resilient and low-maintenance plant.", drought: 2, sun: "both", cutback: false, type: "shrub", price: 1 },
-  { id: 41, name: "Morning Glory", image: "morningglory.png", categories: ["Modern", "Adaptive"], description: "The Morning Glory Shrub offers beautiful, funnel-shaped flowers, often blue or purple, that open in the morning and close later in the day. It provides dense coverage and is fast-growing. Makes excellent groundcover.", drought: 2, sun: "full", cutback: false, type: "groundcover", price: 1 },
+  { id: 41, name: "Morning Glory", image: "morningglory.png", categories: ["Modern", "Adaptive"], description: "The Morning Glory Shrub offers beautiful, funnel-shaped flowers, often blue or purple, that open in the morning and close later in the day. It provides dense coverage and is fast-growing. Makes excellent groundcover.", drought: 2, sun: "both", cutback: false, type: "groundcover", price: 1 },
   { id: 40, name: "Myoporum", image: "myoporum.png", categories: ["Modern", "Adaptive"], description: "Myoporum is a versatile, evergreen shrub or groundcover known for its tolerance to heat and poor soil. It has small, white flowers and dense, bright green foliage, making it a good choice for screens or mass planting. Makes for excellent ground cover.", drought: 2, sun: "full", cutback: false, type: "groundcover", price: 1 },
   { id: 39, name: "Hong Kong Orchid", image: "hongkongorchid.png", categories: ["Modern", "Trees"], description: "A spectacular ornamental tree famous for its large, fragrant flowers and butterfly-shaped leaves. Provides rare winter color by blooming late fall to early spring.", drought: 3, sun: "partial", cutback: false, type: "tree", price: 3 },
   { id: 38, name: "Velvet Mesquite", image: "velvetmesquite.png", categories: ["Modern", "Adaptive", "Xeriscape", "Trees"], description: "The Mesquite tree is known for its shade and tolerance to arid conditions. It features feathery, green foliage and produces bean pods. Does best in open, unconfined areas.", drought: 1, sun: "full", cutback: false, type: "tree", price: 2 },
@@ -135,6 +135,24 @@ const SunPartial = ({ size = 24 }) => (
   </svg>
 );
 
+const SunHalf = ({ size = 24 }) => (
+  <svg width={size * 0.54} height={size} viewBox="0 0 13 24" fill="none">
+    <defs>
+      <clipPath id="sunHalfClip">
+        <rect x="0" y="0" width="13" height="24" />
+      </clipPath>
+    </defs>
+    <g clipPath="url(#sunHalfClip)">
+      <circle cx="12" cy="12" r="5" fill="#fff" />
+      {[0,45,90,135,180,225,270,315].map(a => (
+        <line key={a} x1="12" y1="3" x2="12" y2="5.5"
+          stroke="#fff" strokeWidth="2" strokeLinecap="round"
+          transform={`rotate(${a} 12 12)`} />
+      ))}
+    </g>
+  </svg>
+);
+
 const AgaveWatermark = ({ style = {} }) => (
   <img src="/logos/whiteagave.png" alt="" style={{ position: "fixed", opacity: 0.06, pointerEvents: "none", ...style }} />
 );
@@ -210,9 +228,9 @@ const PlantCard = ({ plant, onClick, index }) => {
         <div style={{ display: "flex", gap: 3, alignItems: "center" }} title={`Drought Tolerance: ${plant.drought} of 4`}>
           {[1,2,3,4].map(i => <WaterDrop key={i} filled={i <= plant.drought} />)}
         </div>
-        <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
-          {(plant.sun === "full" || plant.sun === "both") && <span title="Full Sun"><SunFull size={22} /></span>}
-          {(plant.sun === "partial" || plant.sun === "both") && <span title="Partial Sun"><SunPartial size={22} /></span>}
+        <div style={{ display: "flex", gap: 3, alignItems: "center" }} title={plant.sun === "both" ? "Thrives in full or partial sun" : plant.sun === "full" ? "Thrives in full sun" : "Thrives in partial sun"}>
+          {(plant.sun === "full" || plant.sun === "both") && <SunFull size={22} />}
+          {(plant.sun === "both" || plant.sun === "partial") && <SunHalf size={22} />}
         </div>
         {plant.price && (
           <span style={{ fontSize: 13, fontWeight: 800, color: "#fff", fontFamily: "'Montserrat', sans-serif", letterSpacing: "0.02em" }} title={plant.price === 1 ? "Low cost" : plant.price === 2 ? "Average cost" : "Premium cost"}>
@@ -335,9 +353,9 @@ const PlantDetail = ({ plant, onClose }) => {
                     <span style={{ fontSize: 10, color: "#fff", fontFamily: "'Open Sans', sans-serif" }}>full sun</span>
                   </div>
                 )}
-                {(plant.sun === "partial" || plant.sun === "both") && (
+                {(plant.sun === "both" || plant.sun === "partial") && (
                   <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2 }}>
-                    <SunPartial size={24} />
+                    <SunHalf size={24} />
                     <span style={{ fontSize: 10, color: "#fff", fontFamily: "'Open Sans', sans-serif" }}>partial sun</span>
                   </div>
                 )}
@@ -713,7 +731,11 @@ export default function App() {
                   <span style={{ fontSize: 14, fontWeight: 700, color: "#fff", fontFamily: "'Open Sans', sans-serif" }}>Full Sun</span>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "14px 18px", borderRadius: 8, background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.4)" }}>
-                  <SunPartial size={28} />
+                  <div style={{ display: "flex", alignItems: "center", gap: 3 }}><SunFull size={28} /><SunHalf size={28} /></div>
+                  <span style={{ fontSize: 14, fontWeight: 700, color: "#fff", fontFamily: "'Open Sans', sans-serif" }}>Full + Partial Sun</span>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "14px 18px", borderRadius: 8, background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.4)" }}>
+                  <SunHalf size={28} />
                   <span style={{ fontSize: 14, fontWeight: 700, color: "#fff", fontFamily: "'Open Sans', sans-serif" }}>Partial Sun</span>
                 </div>
               </div>
