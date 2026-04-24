@@ -508,12 +508,6 @@ export default function App() {
       }}>
         <div className="nav-inner" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", height: 60 }}>
 <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <span style={{ fontSize: 18, fontWeight: 900, fontFamily: "'Montserrat', sans-serif", letterSpacing: "-0.01em" }}>
-              <span style={{ color: "#fff" }}>CAM</span><span style={{ color: "rgba(255,255,255,0.45)" }}>CRE.</span>
-            </span>
-            <span style={{ fontSize: 16, fontWeight: 600, color: "rgba(255,255,255,0.5)", fontFamily: "'Montserrat', sans-serif", margin: "0 4px" }}>
-              &
-            </span>
             <img src="/logos/whiteagave.png" alt="Encore Logo" style={{ width: 24, height: 24, objectFit: "contain" }} />
             <span className="nav-brand-name" style={{ fontSize: 18, fontWeight: 800, color: "#fff", fontFamily: "'Montserrat', sans-serif", letterSpacing: "-0.01em" }}>
               Encore Landscape Management
